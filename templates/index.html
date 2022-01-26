@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Говорящая голова</title>
+</head>
+<body>
+<h2 align="center" style="color: green">Добро пожаловать. Вас приветствует говорящая голова</h2>
+<div id="divVideo" align="center">
+  <video id="v1" height="500px" width="500px" autoplay>
+    <source src="{{ url_for('static', filename='v5.mp4') }}" type="video/mp4" />
+  </video>
+</div>
+</body>
+<script>
+var i = 0;
+var inte = setInterval(() => {
+    doSomething(i);
+
+    if (i == 4) clearInterval(inte);
+    i++;
+}, 3000);
+
+function doSomething(i) {
+    var video = document.getElementById('v1');
+    var source = document.getElementById("v1")
+    source.setAttribute("src", `/static/v${i}.mp4`)
+    video.load();
+    video.play();
+};
+</script>
+</html>
